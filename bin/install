@@ -1,0 +1,9 @@
+#!/bin/sh
+INSTALL_DIR=~/.gleam/bin/
+PROJECT=$(grep -Po 'name = "\K[a-z_]+' gleam.toml)
+
+gleam run -m gleescript
+chmod +x ./$PROJECT
+mkdir -pv $INSTALL_DIR
+mv ./$PROJECT $INSTALL_DIR
+echo "Done"
